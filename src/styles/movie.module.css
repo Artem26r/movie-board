@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  width: 380px;
+  border-radius: 4px;
+  overflow: auto;
+  margin: 16px;
+  background-color: #1e1b26;
+  box-shadow: 5px 5px 115px -14px black;
+}
+.card img {
+  width: 130px;
+  height: 200px;
+  object-fit: cover;
+}
+.info {
+  padding: 8px;
+  color: #e7e7e7;
+}
+
+.name_movie {
+    font-size: 16px;
+}
