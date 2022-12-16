@@ -55,7 +55,7 @@ class Main extends React.Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Container maxWidth="md">
+        <Container maxWidth="xl">
           <Search searchMovies={this.searchMovies} />
           {loading ? (
             <Box sx={{ display: 'flex' }}>
