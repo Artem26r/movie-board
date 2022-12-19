@@ -27,8 +27,9 @@ const Search = (props) => {
     <>
       <TextField
         fullWidth
-        label="fullWidth"
+        label="Введите название"
         id="fullWidth"
+        type="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleKey}
@@ -39,6 +40,13 @@ const Search = (props) => {
           aria-labelledby="demo-row-radio-buttons-group-label"
           name="row-radio-buttons-group"
         >
+          <FormControlLabel
+            value="ALL"
+            control={<Radio />}
+            label="Все"
+            onChange={handleFilter}
+            checked={type === "ALL"}
+          />
           <FormControlLabel
             value="TV_SERIES"
             control={<Radio />}
@@ -53,13 +61,6 @@ const Search = (props) => {
             label="Фильмы"
             onChange={handleFilter}
             checked={type === "FILM"}
-          />
-          <FormControlLabel
-            value="ALL"
-            control={<Radio />}
-            label="Все"
-            onChange={handleFilter}
-            checked={type === "ALL"}
           />
         </RadioGroup>
       </FormControl>

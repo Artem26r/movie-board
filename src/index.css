@@ -5,21 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #282828 !important;
   background-position: center;
   background-size: cover;
   background-repeat: repeat;
+  background-color: #282828;
 }
-
-
-
-.css-10ltm04-MuiToolbar-root {
-  padding-left: 24px;
-  padding-right: 24px;
-  background: #DA1A33;
-}
-
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

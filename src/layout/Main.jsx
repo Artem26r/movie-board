@@ -1,37 +1,21 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { Movies } from "../components/Movies";
 import Search from "../components/Search";
 
-const API_KEY = process.env.REACT_APP_API_KEY
+const API_KEY = process.env.REACT_APP_API_KEY;
 
-class Main extends React.Component {
-  state = {
-    movies: [],
-    loading: true,
-  };
+const Main = () => {
 
-  componentDidMount() {
-    fetch(
-      "https://kinopoiskapiunofficial.tech/api/v2.2/films/?keyword=наруто&order=RATING",
-      {
-        method: "GET",
-        headers: {
-          "X-API-KEY": API_KEY,
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => this.setState({ movies: data.items, loading: false }))
-      .catch((err) => console.log(err));
-  }
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  searchMovies = (str, type = "ALL") => {
-    this.setState({ loading: true });
+  const searchMovies = (str, type = "ALL") => {
+    setLoading(true);
     fetch(
       `https://kinopoiskapiunofficial.tech/api/v2.2/films/?keyword=${str}&order=RATING&${
         type !== "ALL" ? `type=${type}` : ""
@@ -45,29 +29,45 @@ class Main extends React.Component {
       }
     )
       .then((res) => res.json())
-      .then((data) => this.setState({ movies: data.items, loading: false }))
-      .catch((err) => console.log(err));
+      .then((data) => {
+        setMovies(data.items);
+        setLoading(false);
+      });
   };
 
-  render() {
-    const { movies, loading } = this.state;
+  useEffect(() => {
+    fetch(
+      "https://kinopoiskapiunofficial.tech/api/v2.2/films/?keyword=наруто&order=RATING",
+      {
+        method: "GET",
+        headers: {
+          "X-API-KEY": API_KEY,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.items);
+        setLoading(false);
+      });
+  }, []);
 
-    return (
-      <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="xl">
-          <Search searchMovies={this.searchMovies} />
-          {loading ? (
-            <Box sx={{ display: 'flex' }}>
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="xl" sx={{pt: '5rem'}}>
+          <Search searchMovies={searchMovies} />
+        {loading ? (
+          <Box sx={{ display: "flex" }}>
             <CircularProgress />
           </Box>
-          ) : (
-            <Movies movies={movies} />
-          )}
-        </Container>
-      </React.Fragment>
-    );
-  }
-}
+        ) : (
+          <Movies movies={movies} />
+        )}
+      </Container>
+    </React.Fragment>
+  );
+};
 
 export default Main;
