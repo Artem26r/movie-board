@@ -48,6 +48,13 @@ const Search = (props) => {
             checked={type === "ALL"}
           />
           <FormControlLabel
+            value="FILM"
+            control={<Radio />}
+            label="Фильмы"
+            onChange={handleFilter}
+            checked={type === "FILM"}
+          />
+          <FormControlLabel
             value="TV_SERIES"
             control={<Radio />}
             label="Сериалы"
@@ -56,11 +63,20 @@ const Search = (props) => {
             checked={type === "TV_SERIES"}
           />
           <FormControlLabel
-            value="FILM"
+            value="MINI_SERIES"
             control={<Radio />}
-            label="Фильмы"
+            label="Мини сериалы"
+            data-type="MINI_SERIES"
             onChange={handleFilter}
-            checked={type === "FILM"}
+            checked={type === "MINI_SERIES"}
+          />
+          <FormControlLabel
+            value="TV_SHOW"
+            control={<Radio />}
+            label="Тв шоу"
+            data-type="TV_SHOW"
+            onChange={handleFilter}
+            checked={type === "TV_SHOW"}
           />
         </RadioGroup>
       </FormControl>
