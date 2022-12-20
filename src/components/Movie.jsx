@@ -28,8 +28,8 @@ export default function Movie(props) {
         </div>
         <div>
           <div className={styles.rating}>
-            IMDB - <span>{ratingImdb}</span> / Кинопоиск -{" "}
-            <span>{ratingKinopoisk}</span>
+            IMDB - <span>{ratingImdb === null ? 'N/A' : ratingImdb}</span> / Кинопоиск -{" "}
+            <span>{ratingKinopoisk === null ? 'N/A' : ratingKinopoisk}</span>
           </div>
           <div className={styles.genre}>
             {genres.map((el) => {
