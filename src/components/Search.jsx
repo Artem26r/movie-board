@@ -14,7 +14,7 @@ const Search = (props) => {
 
   const handleKey = (e) => {
     if (e.key === "Enter") {
-      searchMovies(search, type);
+      searchMovies(search.replace(/ +/g, ' ').trim(), type);
     }
   };
 
