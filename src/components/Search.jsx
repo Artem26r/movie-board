@@ -14,7 +14,7 @@ const Search = (props) => {
 
   const handleKey = (e) => {
     if (e.key === "Enter") {
-      searchMovies(search.replace(/ +/g, ' ').trim(), type);
+      searchMovies(search.trim(), type);
     }
   };
 
@@ -31,7 +31,7 @@ const Search = (props) => {
         id="fullWidth"
         type="search"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value.replace(/ +/g, ' '))}
         onKeyDown={handleKey}
       />
       <FormControl>
