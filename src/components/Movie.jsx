@@ -42,7 +42,7 @@ export default function Movie(props) {
     <div className={styles.card}>
       <img src={posterUrlPreview} alt={nameRu === null ? nameOriginal : nameRu} />
       <div className={styles.info}>
-        <div>
+        <div className={styles.top}>
           <div className={styles.name_movie}>{nameRu === null ? nameOriginal : nameRu}</div>
           <div>{year} год - <span>{genreTranslation(type)}</span></div>
           <div className={styles.country}>

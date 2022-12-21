@@ -42,10 +42,15 @@
 @media (max-width: 640px) {
   .card {
     flex-direction: column;
-    padding-top: 20px;
   }
   .card img {
     margin: 32px auto 8px;
     border-radius: 8px;
+  }
+  .top {
+    margin-bottom: 16px;
+  }
+  .info{
+    padding: 16px 16px 20px 16px;
   }
 }
